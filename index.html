@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Aram Homoeopathy Clinic – Gentle Care. Lasting Health.</title>
+<title>Aram Homoeopathy Clinic –  Lasting Health.</title>
 <meta name="description" content="Aram Homoeopathy Clinic offers safe, effective, and holistic homeopathic treatment in Tamil Nadu. Expert doctors with 10+ years of clinical excellence.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,700;1,500&display=swap" rel="stylesheet">
@@ -62,21 +62,22 @@ nav.scrolled { box-shadow: var(--shadow-soft); }
   display: flex; align-items: center; gap: 12px;
   text-decoration: none;
 }
-.nav-logo-mark {
-  width: 44px; height: 44px; border-radius: 50%;
-  border: 2px solid var(--sage);
-  display: flex; align-items: center; justify-content: center;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 18px; font-weight: 600; color: var(--forest);
-  background: linear-gradient(135deg, var(--mint) 0%, var(--white) 100%);
+.nav-logo-img {
+  width: 46px; height: 46px; border-radius: 50%;
+  object-fit: cover;
+  border: 1.5px solid rgba(74, 124, 89, 0.25);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  background: #000000;
 }
 .nav-logo-text { display: flex; flex-direction: column; }
 .nav-logo-text span:first-child {
   font-family: 'Playfair Display', serif;
-  font-size: 15px; font-weight: 700; color: var(--forest); letter-spacing: 0.5px;
+  font-size: 22px; font-weight: 800; color: var(--forest); letter-spacing: 1.5px;
+  line-height: 1;
 }
 .nav-logo-text span:last-child {
-  font-size: 10px; color: var(--sage); letter-spacing: 1.5px; text-transform: uppercase;
+  font-size: 9px; color: var(--sage); letter-spacing: 2px; text-transform: uppercase;
+  margin-top: 2px;
 }
 .nav-links {
   display: flex; align-items: center; gap: 32px; list-style: none;
@@ -231,6 +232,7 @@ nav.scrolled { box-shadow: var(--shadow-soft); }
   display: flex; align-items: center; justify-content: center;
   font-size: 48px; margin: 0 auto 12px; border: 3px solid var(--gold);
   font-family: 'Cormorant Garamond', serif; color: white; font-weight: 600;
+  object-fit: cover;
 }
 .doctor-card-hero h4 {
   font-family: 'Cormorant Garamond', serif;
@@ -272,18 +274,56 @@ section { padding: 100px 5%; }
 }
 .about-main-img {
   width: 100%; border-radius: 24px;
-  background: linear-gradient(135deg, var(--mint), var(--sage));
-  height: 460px; display: flex; flex-direction: column;
-  align-items: center; justify-content: center; position: relative; overflow: hidden;
+  height: 460px; position: relative; overflow: hidden;
+  box-shadow: var(--shadow-soft);
+  cursor: pointer;
 }
-.about-main-img::before {
+.about-img-front {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, var(--mint), var(--sage));
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 2;
+}
+.about-img-front::before {
   content: '🌿';
   font-size: 140px; opacity: 0.15; position: absolute;
+}
+.about-img-back {
+  position: absolute; inset: 0;
+  background-color: #000000;
+  display: flex; align-items: center; justify-content: center;
+  transform: translateX(100%);
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1;
+}
+.about-img-back img {
+  width: 100%; height: 100%;
+  object-fit: contain;
+}
+.about-main-img:hover .about-img-front {
+  transform: translateX(-100%);
+}
+.about-main-img:hover .about-img-back {
+  transform: translateX(0);
 }
 .about-img-text {
   position: relative; z-index: 2;
   font-family: 'Cormorant Garamond', serif;
   font-size: 28px; color: var(--forest); text-align: center; font-weight: 600;
+}
+.hover-hint {
+  position: absolute; bottom: 20px;
+  font-size: 11px; font-weight: 600;
+  color: var(--forest); opacity: 0.6;
+  text-transform: uppercase; letter-spacing: 1px;
+  background: rgba(255,255,255,0.35);
+  padding: 6px 14px; border-radius: 50px;
+  transition: opacity 0.3s;
+}
+.about-main-img:hover .hover-hint {
+  opacity: 0;
 }
 .about-badge-float {
   position: absolute; bottom: -24px; right: -24px;
@@ -429,6 +469,7 @@ section { padding: 100px 5%; }
   font-size: 56px; color: var(--forest); font-weight: 600;
   border: 4px solid rgba(255,255,255,0.3);
   margin: 0 auto 16px;
+  object-fit: cover;
 }
 .doctor-card-top h3 {
   font-family: 'Cormorant Garamond', serif;
@@ -503,8 +544,9 @@ section { padding: 100px 5%; }
 .testimonial-card {
   background: var(--white); border-radius: 20px; padding: 36px;
   min-width: calc(33.333% - 16px);
+  width: calc(33.333% - 16px);
+  flex: 0 0 calc(33.333% - 16px);
   box-shadow: var(--shadow-soft);
-  flex-shrink: 0;
 }
 .testimonial-stars { font-size: 18px; margin-bottom: 16px; color: var(--gold); }
 .testimonial-text {
@@ -766,12 +808,13 @@ footer {
 .floating-wa:hover { transform: scale(1.12); box-shadow: 0 8px 32px rgba(37,211,102,0.5); }
 .floating-appt {
   position: fixed; bottom: 24px; right: 24px; z-index: 999;
-  background: var(--forest); color: white; padding: 14px 22px;
+  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+  color: var(--forest); padding: 14px 22px;
   border-radius: 50px; text-decoration: none; font-size: 14px; font-weight: 600;
-  box-shadow: var(--shadow-card); display: flex; align-items: center; gap: 8px;
-  transition: background 0.2s, transform 0.15s;
+  box-shadow: 0 4px 20px rgba(184,147,42,0.35); display: flex; align-items: center; gap: 8px;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
-.floating-appt:hover { background: var(--moss); transform: translateY(-2px); }
+.floating-appt:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(184,147,42,0.45); }
 @keyframes float {
   0%,100% { transform: translateY(0); }
   50% { transform: translateY(-6px); }
@@ -808,7 +851,11 @@ footer {
   .hero-right { margin-top: 48px; }
   .about-grid, .why-grid, .contact-grid, .appointment-grid { grid-template-columns: 1fr; }
   .about-badge-float { position: static; margin: 24px auto 0; max-width: 180px; }
-  .testimonial-card { min-width: calc(100% - 16px); }
+  .testimonial-card {
+    min-width: calc(100% - 16px);
+    width: calc(100% - 16px);
+    flex: 0 0 calc(100% - 16px);
+  }
   .form-row { grid-template-columns: 1fr; }
   .enquiry-inner { padding: 36px 24px; }
   .appt-form { padding: 32px 24px; }
@@ -834,7 +881,7 @@ footer {
 <!-- NAV -->
 <nav id="navbar">
   <a href="#home" class="nav-logo">
-    <div class="nav-logo-mark">A</div>
+    <img src="logo.png" alt="Aram Homoeopathy Logo" class="nav-logo-img">
     <div class="nav-logo-text">
       <span>ARAM</span>
       <span>Homoeopathy</span>
@@ -874,7 +921,7 @@ footer {
       Trusted Since 2014 · Tamil Nadu
     </div>
     <h1 class="hero-title">
-      Natural Healing<br>
+      Gentle Healing<br>
       for a <em>Better</em><br>
       Tomorrow
     </h1>
@@ -895,21 +942,11 @@ footer {
       </div>
       <div class="hero-stat">
         <span class="hero-stat-num" data-target="98">0</span>
-        <span class="hero-stat-label">% Success Rate</span>
+        <span class="hero-stat-label"> Success Rate</span>
       </div>
     </div>
   </div>
   <div class="hero-right">
-    <div class="doctor-card-hero">
-      <div class="doctor-avatar">D</div>
-      <h4>Dr. Dharshna B</h4>
-      <p>BHMS, MD(HOM)<br>Reg No: 5848</p>
-    </div>
-    <div class="doctor-card-hero">
-      <div class="doctor-avatar">G</div>
-      <h4>Dr. Gopikrishnan L</h4>
-      <p>BHMS, MD(HOM)<br>Reg No: 5956</p>
-    </div>
   </div>
 </section>
 
@@ -918,17 +955,21 @@ footer {
   <div class="about-grid">
     <div class="about-image-block fade-up">
       <div class="about-main-img">
-        <div class="about-img-text">
-          🌿 Gentle Care<br>
-          <small style="font-size:16px;color:var(--forest);opacity:0.7">Lasting Health</small>
+        <!-- Front side: Gentle Care -->
+        <div class="about-img-front">
+          <div class="about-img-text" style="padding: 0 24px;">
+            🌿 Patient centered approach - Personalized<br>
+            <small style="font-size:16px;color:var(--forest);opacity:0.7;display:block;margin-top:8px;">A gentle, Holistic & long lasting</small>
+          </div>
+          <span class="hover-hint">🔍 Hover to view details</span>
+        </div>
+        <!-- Back side: Clinic details card -->
+        <div class="about-img-back">
+          <img src="about-card.png" alt="Aram Homoeopathy Clinic Details">
         </div>
       </div>
-      <div class="about-badge-float">
-        <span class="num">10+</span>
-        <span class="lbl">Years of Clinical<br>Excellence</span>
-      </div>
     </div>
-    <div class="fade-up fade-up-delay-1">
+  <div class="fade-up fade-up-delay-1">
       <div class="section-label">About Us</div>
       <h2 class="section-title">Healing You From<br>the <em>Root Cause</em></h2>
       <p class="section-desc">At Aram Homoeopathy Clinic, we believe in the gentle power of natural medicine. Our expert doctors provide individualized treatment that addresses the root cause of illness, helping you achieve lasting relief and vibrant health.</p>
@@ -1084,7 +1125,7 @@ footer {
   <div class="doctors-grid">
     <div class="doctor-card fade-up">
       <div class="doctor-card-top">
-        <div class="doctor-avatar-lg">D</div>
+        <img src="dharshana.png" alt="Dr. Dharshna B" class="doctor-avatar-lg">
         <h3>Dr. Dharshna B</h3>
         <p class="qual">BHMS, MD(HOM)</p>
         <span class="reg-badge">Reg No: 5848</span>
@@ -1123,7 +1164,7 @@ footer {
     </div>
     <div class="doctor-card fade-up fade-up-delay-2">
       <div class="doctor-card-top">
-        <div class="doctor-avatar-lg">G</div>
+        <img src="gopikrishnan.png" alt="Dr. Gopikrishnan L" class="doctor-avatar-lg">
         <h3>Dr. Gopikrishnan L</h3>
         <p class="qual">BHMS, MD(HOM)</p>
         <span class="reg-badge">Reg No: 5956</span>
@@ -1173,8 +1214,8 @@ footer {
   <div class="treatments-grid">
     <div class="treatment-card fade-up">
       <div class="treatment-icon-wrap">🫁</div>
-      <div class="treatment-title">Chronic Diseases</div>
-      <div class="treatment-desc">Diabetes, BP, Arthritis & more</div>
+      <div class="treatment-title">Arthritis</div>
+      <div class="treatment-desc">Rheumatoid Arthritis, Osteoarthritis, Gout and other bone related diseases</div>
     </div>
     <div class="treatment-card fade-up fade-up-delay-1">
       <div class="treatment-icon-wrap">🌸</div>
@@ -1217,8 +1258,33 @@ footer {
       <div class="treatment-desc">Chronic headaches, cluster migraines</div>
     </div>
     <div class="treatment-card fade-up">
+      <div class="treatment-icon-wrap">🤰</div>
+      <div class="treatment-title">Infertility</div>
+      <div class="treatment-desc">Safe support for male & female conception</div>
+    </div>
+    <div class="treatment-card fade-up fade-up-delay-1">
+      <div class="treatment-icon-wrap">🪨</div>
+      <div class="treatment-title">Renal Stones</div>
+      <div class="treatment-desc">Natural passage & pain management</div>
+    </div>
+    <div class="treatment-card fade-up fade-up-delay-2">
+      <div class="treatment-icon-wrap">🩹</div>
+      <div class="treatment-title">Hemorrhoids</div>
+      <div class="treatment-desc">Gentle relief from piles, fissures & fistulas</div>
+    </div>
+    <div class="treatment-card fade-up">
+      <div class="treatment-icon-wrap">🩸</div>
+      <div class="treatment-title">Diabetes</div>
+      <div class="treatment-desc">Natural blood sugar regulation & management</div>
+    </div>
+    <div class="treatment-card fade-up fade-up-delay-1">
+      <div class="treatment-icon-wrap">🫀</div>
+      <div class="treatment-title">Hypertension</div>
+      <div class="treatment-desc">Holistic blood pressure control & support</div>
+    </div>
+    <div class="treatment-card fade-up fade-up-delay-2">
       <div class="treatment-icon-wrap">🏃</div>
-      <div class="treatment-title">Lifestyle Diseases</div>
+      <div class="treatment-title">Other Lifestyle Diseases</div>
       <div class="treatment-desc">Obesity, fatty liver, metabolic issues</div>
     </div>
   </div>
@@ -1322,7 +1388,7 @@ footer {
     </div>
     <div class="faq-item">
       <div class="faq-question">How long does homeopathic treatment take to show results? <span class="faq-icon">+</span></div>
-      <div class="faq-answer"><p>This depends on the nature and duration of the condition. Acute conditions often respond within days. Chronic diseases that have persisted for years may take several months of consistent treatment. Most patients notice improvement within the first 4–8 weeks.</p></div>
+      <div class="faq-answer"><p>The duration of treatment depends on the nature, severity, and stage of the disease. Acute conditions may respond quickly, while chronic or long-standing illnesses can require a longer course of treatment. The belief that “Homeopathy always takes a long time to act” is a common misconception.</p></div>
     </div>
     <div class="faq-item">
       <div class="faq-question">Can I take homeopathic medicines alongside allopathic treatment? <span class="faq-icon">+</span></div>
@@ -1334,7 +1400,7 @@ footer {
     </div>
     <div class="faq-item">
       <div class="faq-question">Do I need to follow any diet during treatment? <span class="faq-icon">+</span></div>
-      <div class="faq-answer"><p>Yes, certain foods and substances can interfere with homeopathic remedies. Our doctors will give you specific dietary guidance based on your treatment. Generally, we advise avoiding strong-smelling substances like camphor and raw onion within 30 minutes of taking medicines.</p></div>
+      <div class="faq-answer"><p>In general, no strict or special diet is required during Homeopathic treatment. In certain cases, your physician may recommend minimal dietary restrictions depending on the individual condition and remedy prescribed.</p></div>
     </div>
     <div class="faq-item">
       <div class="faq-question">What are your consultation charges? <span class="faq-icon">+</span></div>
